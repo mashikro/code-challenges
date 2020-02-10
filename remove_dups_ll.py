@@ -44,11 +44,8 @@ class LinkedList(object):
 
         counts = {}
 
-        print('empty dict:', counts)
-
         current = self.head
         new_ll = LinkedList()
-        print('new&empty ll:', new_ll)
 
         while current is not None:
 
@@ -59,15 +56,6 @@ class LinkedList(object):
                 counts[current.data] += 1
 
             current = current.next
-        
-        print('final dict:', counts)
-
-        # new_ll = LinkedList()
-        # print('new&empty:', new_ll)
-
-        # for key in counts.keys():
-        #     new_ll.append(key)
-        #     print(new_ll)
 
         return new_ll
 
@@ -94,6 +82,8 @@ node_3.next=node_6
 linked_lst = LinkedList()
 linked_lst.head=node_1
 linked_lst.tail=node_6
+
+new_ll = linked_lst.remove_dups()
 
 
 
