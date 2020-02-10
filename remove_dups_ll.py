@@ -47,11 +47,14 @@ class LinkedList(object):
         print('empty dict:', counts)
 
         current = self.head
+        new_ll = LinkedList()
+        print('new&empty ll:', new_ll)
 
         while current is not None:
 
             if current.data not in counts:
                 counts[current.data] = 1
+                new_ll.append(current.data)
             else:
                 counts[current.data] += 1
 
@@ -59,12 +62,12 @@ class LinkedList(object):
         
         print('final dict:', counts)
 
-        new_ll = LinkedList()
-        print('new&empty:', new_ll)
+        # new_ll = LinkedList()
+        # print('new&empty:', new_ll)
 
-        for key in counts.keys():
-            new_ll.append(key)
-            print(new_ll)
+        # for key in counts.keys():
+        #     new_ll.append(key)
+        #     print(new_ll)
 
         return new_ll
 
