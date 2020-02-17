@@ -1,5 +1,47 @@
+# Prompt: Your company built an in-house calendar tool called HiCal. 
+# You want to add a feature to see the times in a day when everyone is available.
+
 # input = [(1, 3), (2, 4)]
 # ret =   [(1, 4)]
+
+# a & b are tuples of (start,end)
+# assume a & b are in sorted order.
+# output is boolean (whether they overlap)
+def is_overlapping(a, b):
+    return (a[1] >= b[0])
+
+# a & b are tuples of (start,end)
+# assume that they overlap.
+# returns a single merged range.
+def merge_two_ranges(a, b):
+    return (min(a[0], b[0]), max(a[1], b[1]))
+
+# ranges is list of [start,end]
+def merge_all_ranges(ranges):
+    ret = [] # return value of merged ranges
+    ranges = sorted(ranges) #O(nlgn)
+    i = 0    # which of the input ranges we are considering
+    while i<len(ranges): #O(n)
+        if (len(ret)==0):
+            ret.append(ranges[i])
+        else:
+            if (is_overlapping(ret[-1], ranges[i])):
+                ret[-1] = merge_two_ranges(ret[-1], ranges[i])
+            else:
+                ret.append(ranges[i])
+        i += 1
+    return ret
+
+#Runtime O(nlgn)
+
+print(merge_all_ranges([(1, 3), (2, 4)])) #   [(1, 4)]
+print(merge_all_ranges([(1, 5), (2, 3)])) # 1,5
+print(merge_all_ranges( [(1, 2), (2, 3)])) #1,3
+print(merge_all_ranges([(0,1), (3,5), (4,8), (10,12), (9,10)])) #  [(0, 1), (3, 8), (9, 12)]
+print(merge_all_ranges([(1, 10), (2, 6), (3, 5), (7, 9)])) #(1, 10)
+
+
+
 
 def merge_range(meeting_times):
 
@@ -38,43 +80,10 @@ print(merge_range([(1, 3), (2, 4)])) #   [(1, 4)]
 print(merge_range([(1, 5), (2, 3)])) # 1,5
 print(merge_range( [(1, 2), (2, 3)])) #1,3
 print(merge_range([(0,1), (3,5), (4,8), (10,12), (9,10)])) #  [(0, 1), (3, 8), (9, 12)]
+print(merge_range([(1, 10), (2, 6), (3, 5), (7, 9)])) #(1, 10)
 
 
 
-
-# a & b are tuples of (start,end)
-# assume a & b are in sorted order.
-# output is boolean (whether they overlap)
-def is_overlapping(a, b):
-    return (a[1] >= b[0])
-
-# a & b are tuples of (start,end)
-# assume that they overlap.
-# returns a single merged range.
-def merge_two_ranges(a, b):
-    return (min(a[0], b[0]), max(a[1], b[1]))
-
-# ranges is list of [start,end]
-def merge_all_ranges(ranges):
-    ret = [] # return value of merged ranges
-    ranges = sorted(ranges)
-    i = 0    # which of the input ranges we are considering
-    while i<len(ranges):
-        if (len(ret)==0):
-            ret.append(ranges[i])
-        else:
-            if (is_overlapping(ret[-1], ranges[i])):
-                ret[-1] = merge_two_ranges(ret[-1], ranges[i])
-            else:
-                ret.append(ranges[i])
-        i += 1
-    return ret
-
-
-print(merge_all_ranges([(1, 3), (2, 4)])) #   [(1, 4)]
-print(merge_all_ranges([(1, 5), (2, 3)])) # 1,5
-print(merge_all_ranges( [(1, 2), (2, 3)])) #1,3
-print(merge_all_ranges([(0,1), (3,5), (4,8), (10,12), (9,10)])) #  [(0, 1), (3, 8), (9, 12)]
 
 
 

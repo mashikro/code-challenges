@@ -13,7 +13,7 @@
 
 # buy low first and then you can sell high
 
-def maximize_profit2(prices):
+def maximize_profit(prices):
     profit = 0
     if prices:
         
