@@ -12,18 +12,13 @@ def find_product_except_self(lst):
     L[0]=1
 
     for i in range(1, len(lst)):
-
         L[i] = L[i-1] * lst[i-1]
-
 
     R[-1]=1
 
     for i in reversed(range(len(lst)-1)):
-        print('lst[i+1]',lst[i+1])
-
         R[i] = R[i+1] * lst[i+1]
 
-        print('R', R)
 
     for i in range(len(lst)):
         ret[i] = L[i] * R[i]

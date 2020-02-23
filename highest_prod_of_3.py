@@ -6,6 +6,7 @@
 # Input: [1,2,3,4]
 # Output: 24
 
+#does not deal with negatives!
 def find_largest_prod(lst):
 
     lst.sort() 
@@ -42,7 +43,7 @@ def find_largest_prod2(list_of_ints):
     highest_product_of_3 = list_of_ints[0] * list_of_ints[1] * list_of_ints[2]
 
 
-    # Walk through items, starting at index 2
+    # Walk through items, starting at index 2, 3rd item in list
     for i in range(2, len(list_of_ints)):
         current = list_of_ints[i]
         
@@ -75,7 +76,7 @@ def find_largest_prod2(list_of_ints):
 print(find_largest_prod2([2, 4, 1,3])) #24
 print(find_largest_prod2([2, 4, 1,3, 5])) #60
 
-
+#runtime: O(n) time and O(1) additional space.
 
 
 
