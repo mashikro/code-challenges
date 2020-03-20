@@ -32,7 +32,7 @@ def find_max(lst):
 
             possibilites.add(prod)
 
-    print(possibilites)
+    # print(possibilites)
     return max(possibilites)
 
 print(find_max([5,2,3,1])) #6

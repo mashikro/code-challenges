@@ -10,14 +10,10 @@ def find_max_recursively(lst):
     
     mid = len(lst)//2
     first_half = lst[:mid]
-    # print('first_half', first_half)
     second_half = lst[mid:]
-    # print('second_half',second_half)
 
     res1=find_max_recursively(first_half)
-    print('res1=',res1)
     res2=find_max_recursively(second_half)
-    print('res2=',res2)
 
     if res1<res2:
         return res2
@@ -25,8 +21,25 @@ def find_max_recursively(lst):
 
    
 
-print(find_max_recursively([1,4,5,3,6])) #6
+# print(find_max_recursively([1,4,5,3,6])) #6
 # print(find_max_recursively([5,3,1,4])) #5
 
 
 #Runtime of algo is depth of recursion OR have many recurive calls made O(n)
+
+def find_max_recursively_2(lst):
+
+    if not lst:
+        raise Exception('Empty List')
+    if len(lst)<=1:
+        return lst[0]
+
+    num1 = lst[0]
+
+    num2 = find_max_recursively_2(lst[1:])
+
+    if num1<num2:
+        return num2
+    return num1
+
+print(find_max_recursively_2([1,4,5,3,6]))

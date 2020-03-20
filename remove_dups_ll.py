@@ -51,7 +51,7 @@ class LinkedList(object):
 
             if current.data not in counts:
                 counts[current.data] = 1
-                new_ll.append(current.data)
+                new_ll.append(current.data) #append method will create a new node with the
             else:
                 counts[current.data] += 1
 
