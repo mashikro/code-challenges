@@ -4,42 +4,33 @@
 message = [ 'c', 'a', 'k', 'e', ' ','p', 'o', 'u', 'n', 'd', ' ','s', 't', 'e', 'a', 'l' ]
 # Prints: 'steal pound cake'
 
-def make_word(lst):
 
-    words = []
-    start_index = {}
+def reverse_words_in_place(lst):
+    def swap(lst, pos1, pos2):
+        while pos1 < pos2:
+            lst[pos1], lst[pos2] = lst[pos2], lst[pos1]
 
-    word_start_i = 0
-    word_len = 0
+            pos1+=1
+            pos2-=1
 
-    for i in range(len(lst)):
-        if lst[i] != " ":
-            word_start_i = i
-            print(word_start_i)
-            word_len += 1
-        else:
-            words.append(lst[word_start_i:word_len])
+    swap(lst, 0, len(lst)-1) #reverse entire lst
+    
+    
+    # reversing each word
+    beg = 0
+    
+    for i in range(len(lst)+1): 
+        if (i == len(lst)) or (lst[i] == ' '):
+            swap(lst, beg, i-1) #-1 because we're either at space or end
+            # print('swap happened:', lst)
+            beg = i+1 #+1 to skip the " "
 
-    return words
+    print(' '.join(lst))
+            
+input1 = ['l', 'o', 'v', 'e', ' ', 'y', 'o', 'u']
+print('before', message)
+reverse_words_in_place(message)
+print('++++++++++')
+print('AFTER',message)
 
-print(make_word(message))
-def reverse_words(message):
-    message = make_word(message)
-    print('original message', message)
-
-    pos1 = 0
-    pos2 = -1
-    i = 0
-
-    while i <= len(message)//2: 
-        message[pos1], message[pos2] = message[pos2], message[pos1]
-
-        pos1+=1
-        pos2-=1
-        i +=1
-
-    print(' '.join(message))
-    return message
-
-# print(reverse_words(message))
-
+# Runtime: O(n) time and O(1) space!
