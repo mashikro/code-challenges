@@ -39,7 +39,6 @@ def horizantal_cleanup(board, row, col):
 
 
 def find_battleships(board):
-    print('board', board)
     ship_count = 0
 
     for row in range(len(board)):
@@ -48,18 +47,15 @@ def find_battleships(board):
             if board[row][col] == 'X':
                     ship_count+=1
                     if row+1 < len(board) and board[row+1][col] == 'X':
-                        vertical_cleanup(board, row, col) #checks if ship is vertically long
+                        vertical_cleanup(board, row, col) 
                         # print('post VERTICAL cleanup:::::', board)
                         horizantal_cleanup(board, row, col)
                         # print('post HORIZANTAL cleanup:::::',board)
                     elif col+1 < len(board[0]) and board[row][col+1] == 'X':
                         horizantal_cleanup(board, row, col)
                         # print('post HORIZANTAL cleanup:::::',board)
-                        vertical_cleanup(board, row, col) #checks if ship is vertically long
-                        # print('post VERTICAL cleanup:::::', board)
-                    
-                
-    print(board)
+                        vertical_cleanup(board, row, col) 
+                        # print('post VERTICAL cleanup:::::', board)           
     return ship_count
 
 # print(find_battleships([['X', '.', '.', 'X'], ['.', '.', '.', 'X'], ['.', '.', '.', 'X']]))

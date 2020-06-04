@@ -1,8 +1,6 @@
 # Prompt: Write a function to find the 2nd largest element in a binary search tree. 
 # Fair to assume: the largest element is simply the "rightmost" element, so we dont even need to check the left subtree
     
-
-
 class BinaryTreeNode(object):
 
     def __init__(self, data):
@@ -17,7 +15,6 @@ class BinaryTreeNode(object):
     def insert_right(self, data):
         self.right = BinaryTreeNode(data)
         return self.right
-
 
 def find_largest(root_node):
     '''Recursive helper func for finding the rightmost aka largest element'''

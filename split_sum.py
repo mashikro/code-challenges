@@ -63,6 +63,7 @@ print(split_sum([1, 5, 11, 5])) #True
 print(split_sum([1])) #False
 print(split_sum([1, 2, 3, 5])) #False
 print(split_sum([[2,2,3,5]])) #False
+print(split_sum([1,2,2,3]))
 
 
 
